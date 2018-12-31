@@ -11,4 +11,4 @@ app.merge(pageHandler)
 
 # run(app, host='0.0.0.0', port=os.environ.get('PORT', 5000))
 if __name__ == "__main__":
-    run(host='localhost', port=7000)
+    run(app, host='localhost', port=7000)
