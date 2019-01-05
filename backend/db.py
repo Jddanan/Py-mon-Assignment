@@ -1,4 +1,5 @@
 from backend import dbutils
+from backend import utils
 
 def getAllGames():
     return dbutils.queryAll("SELECT * FROM game")
@@ -29,6 +30,11 @@ def joinGame(game_id, player_id):
 
 def updatePlayerStatus(game_id, player_id, status):
     return dbutils.updateOrInsert("UPDATE playergame SET status = '{}' WHERE game = '{}' AND player='{}'".format(status, game_id, player_id))
+
+def isGameFull(game_id):
+    actual_players = dbutils.queryOne("SELECT COUNT(player) FROM playergame WHERE game = {}".format(game_id))
+    print(actual_players['COUNT(player)'])
+    return actual_players['COUNT(player)'] >= utils.GAME_LENGTH
 
 def getReadyPlayers(game_id):
     return dbutils.queryAll("SELECT * FROM playergame WHERE game = '{}' AND status = 'ready'".format(game_id))

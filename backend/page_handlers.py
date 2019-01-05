@@ -35,4 +35,7 @@ def play(game_id):
 @pageHandler.get('/')
 @jinja2_view('./backend/pages/index.html')
 def landing():
-    return {"version" : utils.getVersion()}
+    try:
+        return {"version" : utils.getVersion()}
+    except Exception as e:
+        print(str(e))

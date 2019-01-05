@@ -71,6 +71,11 @@ ul{
     animation-iteration-count: infinite;
 }
 
+.hidden{
+  visibility: hidden;
+  display:none;
+}
+
 /* loader */
 .lds-ellipsis {
     display: inline-block;

@@ -16,8 +16,10 @@ def listGames():
 
 def joinGame(game_id, player_id):
     currentGame = db.getGame(game_id)
-    if currentGame['status'] == "open":
+    if currentGame['status'] == "open" and not db.isGameFull(game_id):
         return db.joinGame(game_id, player_id)
+    elif db.isGameFull(game_id):
+        print('Game is full, sorry!')
     return False
 
 
